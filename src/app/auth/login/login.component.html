@@ -1,0 +1,27 @@
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+      <div class="card">
+          <div class="card-header card-header-success">
+              <h3 class="card-title">Se connecter</h3>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm">
+              <div class="form-group">
+                <label for="email">Adresse mail</label>
+                <input type="email" id="email" formControlName="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" formControlName="password" class="form-control">
+              </div>
+              <button class="btn btn-success border-dark btn-block mt-2" (click)="onLogin()" [disabled]="loginForm.invalid">Connexion</button>
+            </form>
+            <p>{{ errorMessage }}</p>
+          <p>Pas de compte? Créez-en un <a routerLink="../signin">ici</a></p>
+          </div>
+      </div>
+  </div>
+    </div>
+</div>
