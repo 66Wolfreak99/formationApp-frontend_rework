@@ -1,1 +1,35 @@
-<p>signin works!</p>
+
+<div class="container">
+     <div class="row justify-content-md-center">
+         <div class="col-md-4">
+       <div class="card">
+           <div class="card-header card-header-success">
+               <h3 class="card-title">Créer un compte</h3>
+           </div>
+           <div class="card-body">
+             <form [formGroup]="signupForm">
+               <div class="form-group">
+                    <label for="firstName">Prénom</label>
+                    <input type="firstName" id="firstName" formControlName="firstName" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Nom</label>
+                    <input type="lastName" id="lastName" formControlName="lastName" class="form-control">
+                  </div>
+               <div class="form-group">
+                 <label for="email">Adresse mail</label>
+                 <input type="email" id="email" formControlName="email" class="form-control">
+               </div>
+               <div class="form-group">
+                 <label for="password">Mot de passe</label>
+                 <input type="password" id="password" formControlName="password" class="form-control">
+               </div>
+               <button class="btn btn-success border-dark btn-block mt-2" (click)="onSignup()" [disabled]="signupForm.invalid">Connexion</button>
+             </form>
+             <p>{{ errorMessage }}</p>
+             <p>Déja un compte? Connectez-vous <u><a routerLink="../login">ici</a></u></p>
+           </div>
+       </div>
+   </div>
+     </div>
+ </div>

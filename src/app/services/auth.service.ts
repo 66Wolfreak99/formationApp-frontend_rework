@@ -11,14 +11,15 @@ export class AuthService {
   isAuth$ = new BehaviorSubject<boolean>(false);
   token: string;
   userId: string;
+  userName: any;
     constructor(private router: Router,
                 private http: HttpClient) {}
 
-  createNewUser(email: string, password: string) {
+  createNewUser(firstName: string, lastName: string, email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.http.post(
         'http://localhost:3000/api/auth/signin',
-        { email: email, password: password })
+        {firstName: firstName, lastName: lastName, email: email, password: password })
         .subscribe(
           () => {
             this.login(email, password).then(
@@ -44,9 +45,11 @@ export class AuthService {
         'http://localhost:3000/api/auth/login',
         { email: email, password: password })
         .subscribe(
-          (authData: { token: string, userId: string }) => {
+          (authData: {firstName:string, lastName: string, userId: string, token: string, }) => {
+            console.log(authData)
             this.token = authData.token;
             this.userId = authData.userId;
+            this.userName = {firstName: authData.firstName, lastName: authData.lastName};
             this.isAuth$.next(true);
             resolve(null);
           },

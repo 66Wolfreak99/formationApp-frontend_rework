@@ -10,6 +10,7 @@ import { AuthService } from 'app/services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    userName: any;
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
@@ -37,6 +38,7 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+     this.userName = this.authService.userName
     }
 
     sidebarOpen() {

@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -23,6 +23,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { SingleProjectComponent } from './single-project/single-project.component';
 import { ModifyProjectComponent } from './modify-project/modify-project.component';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { ModifyProjectComponent } from './modify-project/modify-project.componen
     ModifyProjectComponent,
 
   ],
-  providers: [ProjectService, AuthService, AuthGuard],
+  providers: [ProjectService, AuthService, AuthGuard,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

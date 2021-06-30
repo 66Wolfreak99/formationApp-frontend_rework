@@ -3,6 +3,7 @@ export class Project {
     _id: string;
     tasks: Task[];
     title: string;
-    description: string
+    description: string;
+    userId: string;
 
 }

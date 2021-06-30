@@ -29,6 +29,7 @@ export class NewProjectComponent implements OnInit {
       title: [null, Validators.required],
       description: [null, Validators.required],
     });
+    this.userId = this.authService.userId
   }
 
   onSubmit(){
@@ -38,6 +39,7 @@ export class NewProjectComponent implements OnInit {
     project.description = this.projectForm.get('description').value;
     project.tasks = [];
     project._id = new Date().getTime().toString();
+    project.userId = this.userId;
     this.projectService.createNewProject(project).then(
      ()=>{
        this.projectForm.reset()

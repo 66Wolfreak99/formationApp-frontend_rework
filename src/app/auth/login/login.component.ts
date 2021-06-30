@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.loading = true;
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
     this.auth.login(email, password).then(
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
       }
     ).catch(
       (error) => {
-        this.loading = false;
         this.errorMessage = error.message;
       }
     );

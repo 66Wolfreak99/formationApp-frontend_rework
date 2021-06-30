@@ -122,7 +122,7 @@ export class ProjectService {
   }
 
   getStuff() {
-    this.http.get('http://localhost:3000/api/posts').subscribe(
+    this.http.get('http://localhost:3000/api/posts/').subscribe(
       (projects: Project[]) => {
         if (projects) {
           this.projects = projects;

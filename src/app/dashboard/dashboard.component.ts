@@ -13,10 +13,12 @@ import { Subscription } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
+  
   projects: Project[];
   projectSubscription: Subscription;
 
   constructor(private projectService: ProjectService,
+              private authService: AuthService,
               private router: Router) { }
   ngOnInit(){
     this.projectSubscription = this.projectService.projectSubject.subscribe(
@@ -26,6 +28,8 @@ export class DashboardComponent implements OnInit {
       }
     );
     this.projectService.getStuff()
+
+    
   }
 
   onSave(projects: Project[],){
@@ -42,9 +46,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  ngOnDestroy(){
-    this.projectSubscription.unsubscribe()
-  }
+  
 
   getClass(index, taskIndex){
     if(this.projects[index].tasks[taskIndex].isComplete ){
@@ -64,7 +66,9 @@ export class DashboardComponent implements OnInit {
     console.log(id)
     this.router.navigate(['/project/' + id]);
   }
+  ngOnDestroy(){
+    this.projectSubscription.unsubscribe()
+  }
 
 }
-
 
