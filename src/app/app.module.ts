@@ -24,6 +24,14 @@ import { NewProjectComponent } from './new-project/new-project.component';
 import { SingleProjectComponent } from './single-project/single-project.component';
 import { ModifyProjectComponent } from './modify-project/modify-project.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { DatePipe } from '@angular/common';
+import { ModifyTaskComponent } from './modify-task/modify-task.component';
+import { SingleTaskComponent } from './single-task/single-task.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewTaskComponent } from './new-task/new-task.component';
+import { DeleteTaskDialogComponent } from './dialogs/delete-task-dialog/delete-task-dialog.component';
+import { DeleteProjectDialogComponent } from './dialogs/delete-project-dialog/delete-project-dialog.component';
+
 
 @NgModule({
   imports: [
@@ -34,6 +42,8 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    MatDialogModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -43,9 +53,14 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
     NewProjectComponent,
     SingleProjectComponent,
     ModifyProjectComponent,
+    ModifyTaskComponent,
+    SingleTaskComponent,
+    NewTaskComponent,
+    DeleteTaskDialogComponent,
+    DeleteProjectDialogComponent,
 
   ],
-  providers: [ProjectService, AuthService, AuthGuard,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true} ],
+  providers: [DatePipe,ProjectService, AuthService, AuthGuard,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

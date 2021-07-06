@@ -1,6 +1,10 @@
+
 export class Task {
-    public isComplete: boolean
-    constructor(
-        public name: string,
-    ){}
+    _id:string;
+    project_id:string;
+    isComplete: Boolean;
+    name: string;
+    description: string;
+    created_at: any;
+
 }

@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+.completedTask{
+     background: linear-gradient(91deg, rgb(225 255 225), #ffffff00);;
+     transition: background 0.8s ease-in-out;
+}

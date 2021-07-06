@@ -1,9 +1,4 @@
 .completedTask{
      background: linear-gradient(91deg, rgb(225, 255, 225), #ffffff00);
-}
-
-.checkmark{
-     margin: -7px -2px;
-    position: relative;
-    top: 5px;
+     border-left: solid 3px;
 }

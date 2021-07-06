@@ -11,7 +11,20 @@
                   <p class="card-category">La liste de tous les projets</p>
                 </div>
                 <div class="card-content table-responsive table-full-width">
-                  <table class="table">
+
+                  <table *ngIf="this.projects.length === 0" class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h3>
+                            Aucun projets!
+                          </h3>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table  *ngIf="this.projects.length !== 0" class="table">
                     <tbody>
                       <tr *ngFor="let project of projects; let i = index" >
                         <td>{{project.title}}</td>

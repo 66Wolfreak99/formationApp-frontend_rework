@@ -46,7 +46,6 @@ export class ProjectService {
     }
   ];*/
   projectSubject = new Subject<Project[]>();
-
   emitProject(){
     this.projectSubject.next(this.projects)
   }
@@ -149,9 +148,24 @@ export class ProjectService {
 
   }
 
+
   modifyProject(id: string, project: Project){
     return new Promise((resolve, reject) => {
       this.http.put('http://localhost:3000/api/posts/' + id, project).subscribe(
+        (response) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+
+  }
+
+  modifyTask(id: string, task: Task){
+    return new Promise((resolve, reject) => {
+      this.http.put('http://localhost:3000/api/posts/' + id, task).subscribe(
         (response) => {
           resolve(response);
         },

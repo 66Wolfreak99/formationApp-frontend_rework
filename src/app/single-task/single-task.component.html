@@ -1,0 +1,72 @@
+<div class="main-content">
+     <div class="container-fluid">
+
+          <div class="row justify-content-md-center">
+               <div class="col-lg-11 col-md-12">
+               <!-- <button class="btn btn-link" (click)="onGoBack()"><< Retour</button>-->
+               <div class="single-thing-pane">
+                    <div class="single-thing-info">
+                         <button class="btn btn-primary m-1 btn-sm mb-3" (click)="onBack()" >Retour</button> <br>
+
+                         <button style="text-align: center; margin: 0 2px;" *ngIf="this.taskNumber > 0, else prevDisabled" (click)="onPreviousTask()" mat-raised-button type="button"  class="btn btn-outline-primary btn-link btn-sm btn-just-icon rounded-circle">
+                              
+                              <i style="font-size: 27px;"  class="material-icons">arrow_back</i>
+                         </button>
+                         <ng-template #prevDisabled>
+               
+                              <button style="text-align: center; margin: 0 2px;" mat-raised-button type="button"  class="btn btn-outline-secondary btn-link btn-sm btn-just-icon rounded-circle disabled">
+                              
+                                   <i style="font-size: 27px;"  class="material-icons">arrow_back</i>
+                              </button>
+
+                         </ng-template>
+
+
+                         <button style="text-align: center;  margin: 0 2px;" *ngIf="this.taskNumber < this.project.tasks.length --- 1, else nextDisabled" (click)="onNextTask()" mat-raised-button type="button"  class="btn btn-outline-primary  btn-link btn-sm btn-just-icon rounded-circle">
+                              <i style="font-size: 27px;" class="material-icons">arrow_forward</i>
+                         </button>
+                         <ng-template #nextDisabled>
+               
+                              <button style="text-align: center; margin: 0 2px;" mat-raised-button type="button"  class="btn btn-outline-secondary btn-link btn-sm btn-just-icon rounded-circle disabled">
+                              
+                                   <i style="font-size: 27px;"  class="material-icons">arrow_forward</i>
+                              </button>
+
+                         </ng-template>
+
+
+                         <div [ngClass]="{'completedTask': task?.isComplete,
+                                          'border-success': task?.isComplete}" class="card">
+                              <div class="card-header">
+                                   <small><span>{{task?.created_at.time}}</span><span style="margin: 0 10px;" ></span><span>{{task?.created_at.date}}</span></small>
+                                   <h4 style="cursor: pointer;" (click)="onBack()" > {{project?.title}}: </h4><h2>{{ task?.name }}</h2>
+                              </div>
+                              <div class="card-body">
+                                  <p>
+                                       {{task?.description}}
+                                  </p>
+                                  <div class="form-check">
+                                   <label class="form-check-label">
+                                        <i *ngIf="task?.isComplete" >Tâche complétée</i><i *ngIf="!task?.isComplete" >Tâche non complétée</i>
+                                       <input (click)="onCompleteTask()" class="form-check-input" type="checkbox" value="" [checked]="this.task.isComplete">
+                                       
+                                       <span class="form-check-sign">
+                                           <span class="check"></span>
+                                       </span>
+                                   </label>
+                                   <label class="form-check-label">
+                                        
+                                   
+                                   </label>
+                                 </div> 
+                              </div>
+                              
+                          </div>
+                          <button class="btn btn-danger m-1" (click)="deleteTaskDialog(this.task)" >Supprimer tâche</button>
+                              <button class="btn btn-primary m-1" (click)="onModifyTask(this.taskNumber)" >Modifier tâche</button>
+                    </div>
+               </div>
+               </div>
+          </div>
+     </div>
+</div>

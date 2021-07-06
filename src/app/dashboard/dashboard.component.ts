@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   
   projects: Project[];
   projectSubscription: Subscription;
+  date: any;
 
   constructor(private projectService: ProjectService,
               private authService: AuthService,
